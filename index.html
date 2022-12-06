@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-Br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="#" onclick="home()">Logo</a>
+        </div>
+        <nav>
+          <ul>
+            <li>
+              <div class="navCadastros">
+                <a href="#" onclick="mostrarInformacoesDeCadastro()">Cadastro</a>
+                <div class="informacoesDeCadastro">
+                  <a href="#" onclick="cadastrarClientes()">Fazer Cadastros</a>
+                  <a href="#" onclick="verClientes()">Ver Cadastros</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="financas">
+                <a href="#">Finanças</a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+
+    </header>
+    <main>
+        <article>
+            <section id="tela1">
+                <div id="carrossel" class="carousel slide" data-bs-ride="true">
+                    <div class="carousel-indicators">
+                      <button type="button" data-bs-target="#carrossel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                      <button type="button" data-bs-target="#carrossel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                      <button type="button" data-bs-target="#carrossel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                      <div class="carousel-item active">
+                        <img src="carrossel/banho-e-tosa-em-gatos-1024x576.jpg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="carrossel/banho-e-tosa-em-gatos-pet-shop.jpeg" class="d-block w-100" alt="...">
+                      </div>
+                      <div class="carousel-item">
+                        <img src="carrossel/banho-e-tosa-em-gatos-1024x576.jpg" class="d-block w-100" alt="...">
+                      </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <div class="cadastroEAgendamento">
+                    <div class="botaoCadastro">
+                        <a href="#" onclick="cadastro()">Logo</a>
+                        <p>Cadastro de clientes e pets</p>
+                    </div>
+                    <div class="botaoAgendamento">
+                        <a href="#">Logo</a>
+                        <p>Agendamento de horarios</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="tela2">
+              <div class="opcoesDeCadastro">
+
+                <div class="fazerCadastro" onclick="cadastrarClientes()"><div class="imgFazerCadastros"></div>
+                
+                </div>
+                <div class="verCadastros" onclick="verCadastros()"><div class="imgVerCadastros"></div>
+                <p>Ver Cadastros</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="tela3">
+
+                <form>
+
+                  <div class="etapasDoCadastro">
+                    <button class="cadastroEtapa1">Etapa 1</button>
+                    <button id="esperandoEtapa2" class="esperandoEtapa2">Etapa 2</button>
+                  </div>
+                  <fieldset id="cadastroDoPet">
+
+                    <h1>Cadastro do Pet</h1>
+
+                    <div class="cadastroDoPet">
+                      <div class="nomeDoPet">
+                        <p>Nome do Pet:</p>
+                        <input type="text" name="nomeDoPet" id="nomeDoPet">
+                      </div>
+
+                      <div class="animal">
+                        <p>Animal:</p>
+                        <select name="animal" id="animal">
+                          <option selected disabled value="">Animal</option>
+                              <option value="cachorro">Cachorro</option>
+                              <option value="gato">Gato</option>
+                          </option>
+                        </select>
+                      </div>
+
+                      <div class="racaDoPet">
+                        <p>Raça:</p>
+                        <input type="text" name="racaDoPet" id="racaDoPet">
+                      </div>
+
+                      <div class="idadeDoPet">
+                        <p>Idade:</p>
+                        <input type="text" name="idadeDoPet" id="idadeDoPet">
+                      </div>
+
+                      <div class="detalhesSobreOPet">
+                        <p>Mais detalhes sobre o pet:</p>
+                        <textarea name="detalhesSobreOPet" id="detalhesSobreOPet"
+                       placeholder="Alergias, manias..."></textarea>
+                      </div>
+
+                      <div class="proximaEtapa">
+                        <a onclick="proximaEtapa()">Prixima etapa</a>
+                      </div>
+
+                    </div>
+                  </fieldset>
+                  <fieldset id="cadastroDoCliente">
+
+                    <h1>Cadastro do Cliente</h1>
+
+                    <div class="cadastroDoCliente">
+                      <div class="nomeDoCliente">
+                        <p>Nome Completo:</p>
+                        <input type="text" name="nomeDoCliente" id="nomeDoCliente">
+                      </div>
+
+                      <div class="email">
+                        <p>Email:</p>
+                        <input type="email" name="email" id="email">
+                      </div>
+
+                      <div class="telefoneDoCliente">
+                        <p>Telefone:</p>
+                        <input type="number" name="telefoneDoCliente" id="telefoneDoCliente">
+                      </div>
+
+                      <div class="finalizarCadastro">
+                        <a onclick="finalizarCadastro()">Finalizar</a>
+                      </div>
+
+                    </div>
+                  </fieldset>
+                </form>
+
+            </section>
+            <section id="tela4">
+              <div class="buscarCadastro">
+                    <div class="buscarNome">
+                        <input type="text" name="buscarNome" id="buscarNome">
+                    </div>
+                    <div class="botaoBuscar">
+                        <button type="submit" onclick="buscar()">Buscar</button>
+                    </div>
+                </div>
+        
+            </section>
+        </article>
+    </main>
+    <footer>
+
+    </footer>
+    <script src="script.js"></script>
+    <script src="bootstrap.bundle.min.js"></script>
+</body>
+</html>
