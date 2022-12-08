@@ -88,7 +88,7 @@
 
             <section id="tela3">
 
-                <form>
+                <div>
 
                   <div class="etapasDoCadastro">
                     <button class="cadastroEtapa1">Etapa 1</button>
@@ -108,8 +108,8 @@
                         <p>Animal:</p>
                         <select name="animal" id="animal">
                           <option selected disabled value="">Animal</option>
-                              <option value="cachorro">Cachorro</option>
-                              <option value="gato">Gato</option>
+                              <option value="Cachorro">Cachorro</option>
+                              <option value="Gato">Gato</option>
                           </option>
                         </select>
                       </div>
@@ -130,12 +130,13 @@
                        placeholder="Alergias, manias..."></textarea>
                       </div>
 
-                      <div class="proximaEtapa">
-                        <a onclick="proximaEtapa()">Prixima etapa</a>
+                      <div class="finalizarCadastro">
+                        <a onclick="finalizarCadastro()">Finalizar</a>
                       </div>
 
                     </div>
                   </fieldset>
+
                   <fieldset id="cadastroDoCliente">
 
                     <h1>Cadastro do Cliente</h1>
@@ -156,8 +157,8 @@
                         <input type="number" name="telefoneDoCliente" id="telefoneDoCliente">
                       </div>
 
-                      <div class="finalizarCadastro">
-                        <a onclick="finalizarCadastro()">Finalizar</a>
+                      <div class="proximaEtapa">
+                        <a onclick="proximaEtapa()">Prixima etapa</a>
                       </div>
 
                     </div>
@@ -165,6 +166,7 @@
                 </form>
 
             </section>
+
             <section id="tela4">
               <div class="buscarCadastro">
                     <div class="buscarNome">
@@ -174,13 +176,68 @@
                         <button type="submit" onclick="buscar()">Buscar</button>
                     </div>
                 </div>
+
+                <!--  Mais informacoes -->
+
+                <div class="cadastros">
+                  <div class="cartaoDeCadastro">
+                    <div class="maisInformacoes">
+                      
+                      <div class="maisInformacaoDoCliente">Informações do Cliente</div>
+
+                      <div class="informacoes">
+                        <p class="info">Nome:</p>
+                        <p class="nomeCl"></p>
+                      </div>
+
+                      <div class="informacoes">
+                        <p class="info">Telefone:</p>
+                        <p>sdfghj</p>
+                      </div>
+
+                      <div class="informacoes">
+                        <p class="info">Email:</p>
+                        <p class="emailDoCliente">asdfghjklçpoiuytrewq</p>
+                      </div>
+
+                      <div class="maisInformacaoDoPet">Informações do Pet</div>
+
+                      <div class="informacoes">
+                        <p class="info">Nome:</p>
+                        
+                      </div>
+                      <div class="informacoes">
+                        <p class="info">Animal:</p>
+                        <p class="telefoneDoCliente"></p>
+                      </div>
+                      <div class="informacoes">
+                        <p class="info">Raça:</p>
+                        <p class="racaDoPet"></p>
+                      </div>
+                      <div class="informacoes">
+                        <p class="info">Idade:</p>
+                        <p class="telefoneDoCliente"></p>
+                      </div>
+                      <div class="informacoes">
+                        <p class="info">Detalhes sobre o pet:</p>
+                      </div>
+                      <div class="detalhes">
+                        <p></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
         
             </section>
+
+            <section id="tela5">
+              
+              
+              
+            </section>
+
         </article>
     </main>
-    <footer>
-
-    </footer>
     <script src="script.js"></script>
     <script src="bootstrap.bundle.min.js"></script>
 </body>
