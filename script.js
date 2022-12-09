@@ -26,12 +26,19 @@ function proximaEtapa() {
     telefoneDoCliente = document.getElementById('telefoneDoCliente').value
     email = document.getElementById('email').value
 
+    if (nomeDoCliente.trim() != "" && telefoneDoCliente.trim() != "" && email.trim() != "") {
+
         let esperandoEtapa2 = document.getElementById('esperandoEtapa2')
         esperandoEtapa2.classList.remove('esperandoEtapa2')
         esperandoEtapa2.classList.add('cadastroEtapa2')
         
         document.getElementById('cadastroDoPet').style.display='block'
         document.getElementById('cadastroDoCliente').style.display='none'
+
+    } else {
+        window.alert("Preencha todos os campos")
+    }
+        
         
 
 }
@@ -61,7 +68,9 @@ function finalizarCadastro() {
     idadeDoPet = document.getElementById('idadeDoPet').value
     detalhesSobreOPet = document.getElementById('detalhesSobreOPet').value
 
-    if (nomeDoPet.trim() != "" ) {
+    if (nomeDoPet.trim() != "" && animal.trim() != "" && racaDoPet.trim() != "" && idadeDoPet.trim() != "" && detalhesSobreOPet.trim() != "") {
+
+        document.getElementById('pergunta1').style.display = 'block'
 
         arrayNomesDosClientes.push(nomeDoCliente)
         arrayTelefonesDosClientes.push(telefoneDoCliente)
@@ -72,18 +81,62 @@ function finalizarCadastro() {
         arrayIdadesDosPets.push(idadeDoPet)
         arrayDetalhesSobreOsPets.push(detalhesSobreOPet)
 
-        document.getElementById('cadastroDoPet').style.display='block'
-        document.getElementById('cadastroDoCliente').style.display='none'
-        document.getElementById('tela2').style.display = 'block'
-        document.getElementById('tela3').style.display = 'none'
-
         limpar()
+        containerDasContas.remove()
+        parar = 0
+    } else {
+        window.alert("Preencha todos os campos")
+    }
+
+
+}
+
+function respostaSim() {
+
+    document.getElementById('pergunta1').style.display = 'none'
+
+    nomeDoPet = document.getElementById('nomeDoPet').value
+    animal = document.getElementById('animal').value
+    racaDoPet = document.getElementById('racaDoPet').value
+    idadeDoPet = document.getElementById('idadeDoPet').value
+    detalhesSobreOPet = document.getElementById('detalhesSobreOPet').value
+
+    if (nomeDoPet.trim() != "" && animal.trim() == "" && racaDoPet.trim() == "" && idadeDoPet.trim() == "" && detalhesSobreOPet.trim() == "") {
+
+        arrayNomesDosClientes.push(nomeDoCliente)
+        arrayTelefonesDosClientes.push(telefoneDoCliente)
+        arrayEmails.push(email)
+        arrayNomesDosPets.push(nomeDoPet)
+        arrayAnimais.push(animal)
+        arrayRacasDosPets.push(racaDoPet)
+        arrayIdadesDosPets.push(idadeDoPet)
+        arrayDetalhesSobreOsPets.push(detalhesSobreOPet)
+
+        document.getElementById('nomeDoPet').value = ""
+        document.getElementById('animal').value = ""
+        document.getElementById('racaDoPet').value = ""
+        document.getElementById('idadeDoPet').value = ""
+        document.getElementById('detalhesSobreOPet').value = ""
+
         containerDasContas.remove()
         parar = 0
         
     }
 
+}
 
+function respostaNao() {
+
+    document.getElementById('cadastroDoPet').style.display='block'
+    document.getElementById('cadastroDoCliente').style.display='none'
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'block'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+
+    limpar()
+    containerDasContas.remove()
+    parar = 0
 }
 
 function cadastro() {
@@ -101,6 +154,10 @@ function cadastrarClientes() {
     document.getElementById('tela2').style.display = 'none'
     document.getElementById('tela3').style.display = 'block'
     document.getElementById('tela4').style.display = 'none'
+
+    document.getElementById('pergunta1').style.display = 'none'
+    document.getElementById('cadastroDoPet').style.display='none'
+    document.getElementById('cadastroDoCliente').style.display='block'
 
 }
 
@@ -134,7 +191,7 @@ function verCadastros() {
 
                 let informacaoDoNomeDoClienteDiv = document.createElement('div')
                 let infoNomeDoClienteP = document.createElement('p')
-                infoNomeDoClienteP.innerHTML = 'Nome: '
+                infoNomeDoClienteP.innerHTML = 'Nome:'
                 let nomeDoClienteP = document.createElement('p')
                 nomeDoClienteP.innerHTML = arrayNomesDosClientes[c]
                 
@@ -421,17 +478,3 @@ function buscar() {
     }
 }
 
-
-function mudarBotao() {
-
-let divDiv = document.createElement('div')
-    divDiv.classList.add('div')
-    let tela = document.getElementById('tela5')
-    tela.appendChild(divDiv)
-    let botao5 = document.createElement('button')
-    botao5.classList.add('botao5')
-    botao5.id = "botao5"
-    botao5.innerHTML = "mmamamam"
-    divDiv.appendChild(botao5)
-
-}

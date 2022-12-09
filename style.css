@@ -68,10 +68,55 @@
 /* Tela 3 - Cadastrar contas*/
 
 #tela3 {
-    display: none;
+    display: block;
     width: 100%;
     margin-top: 150px;
     margin-bottom: 60px;
+}
+
+#pergunta1 {
+    display: none;
+    z-index: 100;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 120px;
+    width: 400px;
+    background: black;
+    border-width: 2px;
+    border-radius: 10px; 
+    border-style: solid;
+    border-color: red;
+}
+#pergunta1 p {
+    color: white;
+    padding: 20px;
+    margin-bottom: -2px;
+}
+#pergunta1 .sim {
+    background: red;
+    color: white;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-width: 2px;
+    border-radius: 10px; 
+    border-style: double;
+    border-color: white;
+    margin-right: 5px;
+}
+#pergunta1 .nao {
+    background: rgb(255, 255, 255);
+    color: black;
+    font-weight: bold;
+    padding: 3px 20px;
+    border-width: 2px;
+    border-radius: 10px; 
+    border-style: double;
+    border-color: white;
+}
+.alternativas1 {
+    margin: 0 0 0 220px;
 }
 
 #cadastroDoPet {
@@ -266,6 +311,10 @@ input[type=number]::-webkit-outer-spin-button {
     margin: 0px 4px 5px;
     height: 24px; 
 }
+.info {
+    font-weight: bold;
+    margin-right: 5px;
+}
 .detalhes {
     background: white;
     color: black;
@@ -295,7 +344,15 @@ input[type=number]::-webkit-outer-spin-button {
 /* Tela 5 - Fazer agendamento*/
 
 #tela5 {
-    display: block;
+    display: none;
+}
+.botao5{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 200px;
+    width: 200px;
 }
 
 
