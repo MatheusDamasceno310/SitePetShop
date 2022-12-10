@@ -3,14 +3,11 @@
     margin: 0;
     box-sizing: border-box;
 }
+ul{
+    margin-right: 20px;
+}
 li {
     margin: 10px 0 0 10px;
-}
-.navCadastros:hover .informacoesDeCadastro {
-    display: flex; 
-}
-.navAgendamentos:hover .informacoesDeAgendamento {
-    display: flex;
 }
 .navCadastros a, .navAgendamentos a, .financas a {
     padding: 10px;
@@ -21,28 +18,8 @@ li {
     color: white; 
     margin: 10px;
 }
-.informacoesDeCadastro {
-    text-align: justify;
-    display: none;
-    position: absolute;
-    flex-direction: column;
-    background: red;
-    height: 170px;
-    width: 180px;
-    margin-top: 20px;;
-    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
-}
-.informacoesDeAgendamento {
-    text-align: justify;
-    display: none;
-    position: absolute;
-    flex-direction: column;
-    background: red;
-    height: 170px;
-    width: 220px;
-    margin-top: 20px;
-    box-shadow: rgb(0, 0, 0) 0px 20px 30px -10px;
-}
+
+
 
 /* Tela 1 - Tela principal*/
 
@@ -206,6 +183,9 @@ ul {
     margin-bottom: 15px;
     width: 100%
 }
+.cadastroDoPet select {
+    cursor: pointer;
+}
 .detalhesSobreOPet textarea{
     width: 300px;
     height: 90px;
@@ -213,7 +193,7 @@ ul {
     padding: 3px 7px;
 }
 #cadastroDoCliente {
-    display: block;
+    display: none;
     position: relative;
     margin: 0 auto;
     height: 400px;
@@ -254,7 +234,9 @@ input[type=number]::-webkit-outer-spin-button {
     width: 100%;
     right: 20px;
 }
-.proximaEtapa a, .marcarAgendamento a {
+.proximaEtapa a, .marcarAgendamento a, .botoesCadastroPet a {
+    color: black;
+    text-decoration: none;
     cursor: pointer;
     padding: 10px;
     width: 160px;
@@ -498,6 +480,41 @@ input[type=number]::-webkit-outer-spin-button {
     cursor: pointer;
 }
 
+
+
+#tela7 {
+    display: none;
+    margin-top: 150px;
+    width: 100%;
+    height: 300px;
+    
+}
+#todosOsAgendamentos {
+    height: 400px;
+    width: 650px;
+    margin-top: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    text-align: center;
+}
+.agendamentos {
+    width: 400px;
+    margin-top: 300px;
+    margin: 0 auto;
+}
+
+.agendamentos button {
+    border: none;
+    color: red;
+    background: none;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 20px;
+}
+.menuTabela {
+    padding: 0 20px 10px 20px;
+    font-weight: bold;
+}
 
 /**/
 

@@ -25,6 +25,38 @@ function home() {
     document.getElementById('tela6').style.display = 'none'
 }
 
+function opcoesDeCadastro() {
+    document.getElementById('cadastroDoPet').style.display='none'
+    document.getElementById('cadastroDoCliente').style.display='none'
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'block'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
+
+    limpar()
+    containerDasContas.outerHTML=""
+    tabelaDosAgendamentos.outerHTML=""
+    parar = 0
+    
+}
+
+function opcoesDeAgendamento() {
+    document.getElementById('cadastroDoPet').style.display='none'
+    document.getElementById('cadastroDoCliente').style.display='none'
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'block'
+    document.getElementById('tela6').style.display = 'none'
+
+    limpar()
+    tabelaDosAgendamentos.outerHTML=""
+    parar = 0
+}
+
 function proximaEtapa() {
 
     nomeDoCliente = document.getElementById('nomeDoCliente').value
@@ -90,7 +122,7 @@ function finalizarCadastro() {
     idadeDoPet = document.getElementById('idadeDoPet').value
     detalhesSobreOPet = document.getElementById('detalhesSobreOPet').value
 
-    if (nomeDoPet.trim() != "" && animal.trim() != "" && racaDoPet.trim() != "" && idadeDoPet.trim() != "") {
+    if (nomeDoCliente.trim() != "" && telefoneDoCliente.trim() != "" && email.trim() != "" && nomeDoPet.trim() != "" && animal.trim() != "" && racaDoPet.trim() != "" && idadeDoPet.trim() != "") {
 
         document.getElementById('pergunta1').style.display = 'block'
 
@@ -103,7 +135,12 @@ function finalizarCadastro() {
         arrayIdadesDosPets.push(idadeDoPet)
         arrayDetalhesSobreOsPets.push(detalhesSobreOPet)
 
-        limpar()
+        document.getElementById('nomeDoPet').value = ""
+        document.getElementById('animal').value = ""
+        document.getElementById('racaDoPet').value = ""
+        document.getElementById('idadeDoPet').value = ""
+        document.getElementById('detalhesSobreOPet').value = ""
+
     } else {
         window.alert("Preencha todos os campos corretamente")
     }
@@ -131,12 +168,6 @@ function resposta1Sim() {
         arrayRacasDosPets.push(racaDoPet)
         arrayIdadesDosPets.push(idadeDoPet)
         arrayDetalhesSobreOsPets.push(detalhesSobreOPet)
-
-        document.getElementById('nomeDoPet').value = ""
-        document.getElementById('animal').value = ""
-        document.getElementById('racaDoPet').value = ""
-        document.getElementById('idadeDoPet').value = ""
-        document.getElementById('detalhesSobreOPet').value = ""
         
     }
 
@@ -154,7 +185,7 @@ function resposta1Nao() {
     document.getElementById('tela6').style.display = 'none'
 
     limpar()
-    containerDasContas.remove()
+    containerDasContas.outerHTML=""
     parar = 0
 }
 
@@ -731,29 +762,110 @@ function agendarCliente() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'block'
-
+    document.getElementById('tela7').style.display = 'none'
 }
 
+let tabelaDosAgendamentos = ""
+
+function apagarAgendamento() {
+    
+
+
+}
 function verAgendamentos() {
 
+    let c = 0
+
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'block'
+
+    if (parar == 0 && arrayAgendarCliente[c] != null) {
+        let todosOsAgendamentosDiv = document.getElementById('todosOsAgendamentos')
+        tabelaDosAgendamentos = document.createElement('table')
+        tabelaDosAgendamentos.classList.add('agendamentos')
+        todosOsAgendamentosDiv.appendChild(tabelaDosAgendamentos)
+        let trMenuTabela = document.createElement('tr')
+        tabelaDosAgendamentos.appendChild(trMenuTabela)
+        let tdMenuCliente = document.createElement('td')
+        tdMenuCliente.innerHTML = "Cliente"
+        tdMenuCliente.classList.add('menuTabela')
+        let tdMenuPet = document.createElement('td')
+        tdMenuPet.innerHTML = "Pet"
+        tdMenuPet.classList.add('menuTabela')
+        let tdMenuServico = document.createElement('td')
+        tdMenuServico.innerHTML = "Serviço"
+        tdMenuServico.classList.add('menuTabela')
+        let tdMenuHorario = document.createElement('td')
+        tdMenuHorario.innerHTML = "Horário"
+        tdMenuHorario.classList.add('menuTabela')
+        let tdMenuData = document.createElement('td')
+        tdMenuData.innerHTML = "Data"
+        tdMenuData.classList.add('menuTabela')
+
+        trMenuTabela.appendChild(tdMenuCliente)
+        trMenuTabela.appendChild(tdMenuPet)
+        trMenuTabela.appendChild(tdMenuServico)
+        trMenuTabela.appendChild(tdMenuHorario)
+        trMenuTabela.appendChild(tdMenuData)
+
+        do {
+
+            if (arrayAgendarCliente[c] == null) {
+                
+                parar = 1
+    
+            } else {
+
+                trInfoAgendamentos = document.createElement('tr')
+                
+                trInfoAgendamentos.innerHTML = `
+                <td>${arrayAgendarCliente[c]}</td>
+                <td>${arrayAgendarPet[c]}</td>
+                <td>${arrayEscolherServico[c]}</td>
+                <td>${arrayHorarioAgendado[c]}</td>
+                <td>${arrayDataAgendada[c]}</td>
+                <td>
+                  <button onclick="apagarAgendamento()">Exluir</button>
+                </td>`
+
+                tabelaDosAgendamentos.appendChild(trInfoAgendamentos)
+
+            }
+
+            c++
+            parar = 1
+
+        } while (c < arrayAgendarCliente.length || parar != 1)
+    }
+
 }
 
-let arrayClienteAgendado = [ ]
-let arrayPetAgendado = [ ]
+let arrayClientesAgendados = [ ]
+let arrayAgendarCliente = [ ]
+let arrayAgendarPet = [ ]
 let arrayEscolherServico = [ ]
-let arrayAgendarParaQuando = [ ]
+let arrayHorarioAgendado = [ ]
+let arrayDiaAgendado = [ ]
+let arrayMesAgendado = [ ]
+let arrayAnoAgendado = [ ]
+let arrayDataAgendada = [ ]
 
 function agendar() {
     let agendarCliente = document.getElementById('agendarCliente').value
     let agendarPet = document.getElementById('agendarPet').value
     let escolherServico = document.getElementById('escolherServico').value
-    let horario = document.getElementById('agendarHora').value
+    let agendarParaQuando = document.getElementById('agendarHora').value
 
     let nomeValido = 0
     let petValido = 0
     let horarioValido = 0
 
-        if (agendarCliente.trim() != "") {
+        if (agendarCliente.trim() != "" && agendarPet.trim() != "" && escolherServico.trim() != "" && agendarParaQuando.trim() != "") {
 
             for (let i = 0; i < arrayNomesDosClientes.length; i++) {
                 if (agendarCliente == arrayNomesDosClientes[i]) {
@@ -765,28 +877,53 @@ function agendar() {
                     petValido++
                 }
             }  
-            for (let i = 0; i < arrayAgendarParaQuando.length; i++) {
-                if (horario != arrayAgendarParaQuando[i] || horario == "") {
+            for (let i = 0; i < arrayHorarioAgendado.length; i++) {
+                if (agendarParaQuando == arrayHorarioAgendado[i]) {
                     horarioValido++
                 }
             }
-            
             if(nomeValido != 0) {
                 
                 if(petValido != 0) {
                     
-                    if(horarioValido == 0) {
+                    if(horarioValido == 0 && agendarParaQuando != "") {
+
+                        let horarioString = new String(agendarParaQuando)
+
+                        let hora = horarioString.slice(11,16)
+                        let horas = hora.slice(0,2)
+                        let minutos = hora.slice(3,6)
+                        let horarioAgendado = horas + ":" + minutos
+                        
+                        let data = horarioString.slice(0,10)
+                        
+                        let dia = data.slice(8,10)
+                        let mes = data.slice(5,7)
+                        let ano = data.slice(0,4)
+
+                        let dataAgendada = dia + "/" + mes + "/" + ano
     
-                        arrayClienteAgendado.push(agendarCliente)
-                        arrayPetAgendado.push(agendarPet)
+                        arrayAgendarCliente.push(agendarCliente)
+                        arrayAgendarPet.push(agendarPet)
                         arrayEscolherServico.push(escolherServico)
-                        array
-    
+                        arrayHorarioAgendado.push(horarioAgendado)
+                        arrayDataAgendada.push(dataAgendada)
+
                         document.getElementById('agendarCliente').value = ""
                         document.getElementById('agendarPet').value = ""
                         document.getElementById('escolherServico').value = ""
                         document.getElementById('agendarHora').value = ""
-    
+
+                        document.getElementById('tela1').style.display = 'none'
+                        document.getElementById('tela2').style.display = 'none'
+                        document.getElementById('tela3').style.display = 'none'
+                        document.getElementById('tela4').style.display = 'none'
+                        document.getElementById('tela5').style.display = 'block'
+                        document.getElementById('tela6').style.display = 'none'
+                        document.getElementById('tela7').style.display = 'none'
+
+                        tabelaDosAgendamentos.outerHTML=""
+
                     } else {
                         window.alert("Horário indisponível")
                     }
@@ -798,7 +935,6 @@ function agendar() {
             } else {
                 document.getElementById('pergunta2').style.display='block'
             }
-            
         } else {
             window.alert('Preencha os campos corretamente')
         }
