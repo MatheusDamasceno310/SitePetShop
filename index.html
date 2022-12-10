@@ -17,10 +17,19 @@
           <ul>
             <li>
               <div class="navCadastros">
-                <a href="#" onclick="mostrarInformacoesDeCadastro()">Cadastro</a>
+                <a href="#">Cadastro</a>
                 <div class="informacoesDeCadastro">
-                  <a href="#" onclick="cadastrarClientes()">Fazer Cadastros</a>
-                  <a href="#" onclick="verClientes()">Ver Cadastros</a>
+                  <a href="#" onclick="cadastrarCliente()">Fazer Cadastros</a>
+                  <a href="#" onclick="verCadastros()">Ver Cadastros</a>
+                </div>
+              </div>
+            </li>
+            <li>
+              <div class="navAgendamentos">
+                <a href="#">Agendamento</a>
+                <div class="informacoesDeAgendamento">
+                  <a href="#" onclick="agendarCliente()">Fazer Agendamento</a>
+                  <a href="#" onclick="verAgendamentos()">Ver Agendamentos</a>
                 </div>
               </div>
             </li>
@@ -68,7 +77,7 @@
                         <p>Cadastro de clientes e pets</p>
                     </div>
                     <div class="botaoAgendamento">
-                        <a href="#">Logo</a>
+                        <a href="#" onclick="agendamento()">Logo</a>
                         <p>Agendamento de horarios</p>
                     </div>
                 </div>
@@ -77,7 +86,7 @@
             <section id="tela2">
               <div class="opcoesDeCadastro">
 
-                <div class="fazerCadastro" onclick="cadastrarClientes()"><div class="imgFazerCadastros"></div>
+                <div class="fazerCadastro" onclick="cadastrarCliente()"><div class="imgFazerCadastro"></div>
                 
                 </div>
                 <div class="verCadastros" onclick="verCadastros()"><div class="imgVerCadastros"></div>
@@ -91,8 +100,8 @@
               <div id="pergunta1">
                 <p>O cliente deseja cadastrar mais algum pet ?</p>
                 <div class="alternativas1">
-                  <button class="sim" onclick="respostaSim()">Sim</button>
-                  <button class="nao" onclick="respostaNao()">Não</button>
+                  <button class="sim" onclick="resposta1Sim()">Sim</button>
+                  <button class="nao" onclick="resposta1Nao()">Não</button>
                 </div>
               </div>
 
@@ -102,6 +111,7 @@
                     <button class="cadastroEtapa1">Etapa 1</button>
                     <button id="esperandoEtapa2" class="esperandoEtapa2">Etapa 2</button>
                   </div>
+
                   <fieldset id="cadastroDoPet">
 
                     <h1>Cadastro do Pet</h1>
@@ -115,7 +125,7 @@
                       <div class="animal">
                         <p>Animal:</p>
                         <select name="animal" id="animal">
-                          <option selected disabled value="">Animal</option>
+                          <option selected disabled value=""> - </option>
                               <option value="Cachorro">Cachorro</option>
                               <option value="Gato">Gato</option>
                           </option>
@@ -138,8 +148,13 @@
                        placeholder="Alergias, manias..."></textarea>
                       </div>
 
-                      <div class="finalizarCadastro">
-                        <a onclick="finalizarCadastro()">Finalizar</a>
+                      <div class="botoesCadastroPet">
+                        <div class="voltar">
+                          <a href="#" onclick="voltar()">Voltar</a>
+                        </div>
+                        <div class="finalizarCadastro">
+                          <a href="#" onclick="finalizarCadastro()">Finalizar</a>
+                        </div>
                       </div>
 
                     </div>
@@ -171,7 +186,7 @@
 
                     </div>
                   </fieldset>
-                </form>
+                </div>
 
             </section>
 
@@ -182,14 +197,79 @@
                     </div>
                     <div class="botaoBuscar">
                         <button type="submit" onclick="buscar()">Buscar</button>
+                        <div id="filtrarQual">
+                          <p>Qual deseja buscar:</p>
+                          <div class="opcoes1">
+                            <button class="filtrarNomeDoCliente" onclick="filtrarNomeDoCliente()">Filtrar Nome dos Clientes</button>
+                            <button class="filtrarNomeDoPet" onclick="filtrarNomeDoPet()">Filtrar Nome Dos Pets</button>
+                          </div>
+                        </div>
                     </div>
                 </div>
         
             </section>
 
             <section id="tela5">
+              <div class="opcoesDeAgendamento">
+
+                <div class="fazerAgendamento" onclick="agendarCliente()"><div class="imgFazerAgendamento"></div>
+                
+                </div>
+                <div class="verAgendamentos" onclick="verAgendamentos()"><div class="imgVerAgendamentos"></div>
+                <p>Ver Agendamentos</p>
+                </div>
+              </div>
+            </section>
+
+            <section id="tela6">
+
+              <div id="pergunta2">
+                <p>Cliente não cadastrado, deseja cadastra-lo ?</p>
+                <div class="alternativas2">
+                  <button class="sim" onclick="resposta2Sim()">Sim</button>
+                  <button class="nao" onclick="resposta2Nao()">Não</button>
+                </div>
+              </div>
+              <div id="pergunta3">
+                <p>Pet não cadastrado, deseja cadastra-lo ?</p>
+                <div class="alternativas3">
+                  <button class="sim" onclick="respost3Sim()">Sim</button>
+                  <button class="nao" onclick="resposta3Nao()">Não</button>
+                </div>
+              </div>
               
-              <button class="botao5" onclick="botao5()"></button>
+              <div>
+                <fieldset id="agendar">
+
+                      <div class="agendar">
+                        <h1>Agendamento</h1>
+                        <div class="agendarCliente">
+                          <p>Cliente: </p>
+                          <input type="text" name="agendarCliente" id="agendarCliente">
+                        </div>
+                        <div class="agendarPet">
+                          <p>Pet: </p>
+                          <input type="text" name="agendarPet" id="agendarPet">
+                        </div>
+                        <div class="escolherServico">
+                          <p>Marcar para:</p>
+                          <select name="escolherServico" id="escolherServico">
+                            <option selected disabled value=""> - </option>
+                                <option value="Banho">Banho</option>
+                                <option value="Tosa">Tosa</option>
+                            </option>
+                          </select>
+                        </div>
+                        <div class="marcarHorario">
+                          <p>Marcar para quando:</p>
+                          <div class="agendarHora">
+                            <input type="datetime-local" name="agendarHora" id="agendarHora">
+                          </div>
+                          <div class="marcarAgendamento"><a onclick="agendar()">Marcar</a></div>
+                        </div>
+                      </div>
+                </fieldset>
+              </div>
               
             </section>
 

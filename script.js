@@ -7,9 +7,12 @@ function limpar() {
     document.getElementById('nomeDoCliente').value = ""
     document.getElementById('telefoneDoCliente').value = ""
     document.getElementById('email').value = ""
+    document.getElementById('agendarCliente').value = ""
+    document.getElementById('agendarPet').value = ""
+    document.getElementById('escolherServico').value = ""
+    document.getElementById('agendarHora').value = ""
 }
 
-var nomeCadastrados = []
 var nomesEncontrados = []
 
 function home() {
@@ -18,6 +21,8 @@ function home() {
     document.getElementById('tela2').style.display = 'none'
     document.getElementById('tela3').style.display = 'none'
     document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
 }
 
 function proximaEtapa() {
@@ -26,21 +31,38 @@ function proximaEtapa() {
     telefoneDoCliente = document.getElementById('telefoneDoCliente').value
     email = document.getElementById('email').value
 
-    if (nomeDoCliente.trim() != "" && telefoneDoCliente.trim() != "" && email.trim() != "") {
+    let emailBuscado = new String(email)
+    let letrasBuscadas = emailBuscado.length
+    let retirarGmail = letrasBuscadas - 10
+    let gmail = emailBuscado
+    .slice(retirarGmail, letrasBuscadas)
+    
 
-        let esperandoEtapa2 = document.getElementById('esperandoEtapa2')
-        esperandoEtapa2.classList.remove('esperandoEtapa2')
-        esperandoEtapa2.classList.add('cadastroEtapa2')
+    
         
-        document.getElementById('cadastroDoPet').style.display='block'
-        document.getElementById('cadastroDoCliente').style.display='none'
+        if (nomeDoCliente.trim() != "" && telefoneDoCliente.trim() != "" && email.trim() != "") {
+            if(gmail == "@gmail.com") {
+                let esperandoEtapa2 = document.getElementById('esperandoEtapa2')
+                esperandoEtapa2.classList.remove('esperandoEtapa2')
+                esperandoEtapa2.classList.add('cadastroEtapa2')
+                
+                document.getElementById('cadastroDoPet').style.display='block'
+                document.getElementById('cadastroDoCliente').style.
+                display='none'
+    
+            } else {
+                window.alert("Adicione o @gmail.com no email")
+            }
 
-    } else {
-        window.alert("Preencha todos os campos")
-    }
+        } else {
+            window.alert("Preencha todos os campos corretamente")
+        }
         
-        
+}
 
+function voltar() {
+    document.getElementById('cadastroDoPet').style.display='none'
+    document.getElementById('cadastroDoCliente').style.display='block'
 }
 
 let nomeDoPet = ""
@@ -68,7 +90,7 @@ function finalizarCadastro() {
     idadeDoPet = document.getElementById('idadeDoPet').value
     detalhesSobreOPet = document.getElementById('detalhesSobreOPet').value
 
-    if (nomeDoPet.trim() != "" && animal.trim() != "" && racaDoPet.trim() != "" && idadeDoPet.trim() != "" && detalhesSobreOPet.trim() != "") {
+    if (nomeDoPet.trim() != "" && animal.trim() != "" && racaDoPet.trim() != "" && idadeDoPet.trim() != "") {
 
         document.getElementById('pergunta1').style.display = 'block'
 
@@ -82,16 +104,14 @@ function finalizarCadastro() {
         arrayDetalhesSobreOsPets.push(detalhesSobreOPet)
 
         limpar()
-        containerDasContas.remove()
-        parar = 0
     } else {
-        window.alert("Preencha todos os campos")
+        window.alert("Preencha todos os campos corretamente")
     }
 
 
 }
 
-function respostaSim() {
+function resposta1Sim() {
 
     document.getElementById('pergunta1').style.display = 'none'
 
@@ -101,7 +121,7 @@ function respostaSim() {
     idadeDoPet = document.getElementById('idadeDoPet').value
     detalhesSobreOPet = document.getElementById('detalhesSobreOPet').value
 
-    if (nomeDoPet.trim() != "" && animal.trim() == "" && racaDoPet.trim() == "" && idadeDoPet.trim() == "" && detalhesSobreOPet.trim() == "") {
+    if (nomeDoPet.trim() != "" && animal.trim() == "" && racaDoPet.trim() == "" && idadeDoPet.trim() == "") {
 
         arrayNomesDosClientes.push(nomeDoCliente)
         arrayTelefonesDosClientes.push(telefoneDoCliente)
@@ -117,15 +137,12 @@ function respostaSim() {
         document.getElementById('racaDoPet').value = ""
         document.getElementById('idadeDoPet').value = ""
         document.getElementById('detalhesSobreOPet').value = ""
-
-        containerDasContas.remove()
-        parar = 0
         
     }
 
 }
 
-function respostaNao() {
+function resposta1Nao() {
 
     document.getElementById('cadastroDoPet').style.display='block'
     document.getElementById('cadastroDoCliente').style.display='none'
@@ -133,6 +150,8 @@ function respostaNao() {
     document.getElementById('tela2').style.display = 'block'
     document.getElementById('tela3').style.display = 'none'
     document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
 
     limpar()
     containerDasContas.remove()
@@ -145,15 +164,28 @@ function cadastro() {
     document.getElementById('tela2').style.display = 'block'
     document.getElementById('tela3').style.display = 'none'
     document.getElementById('tela4').style.display = 'none'
-
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
 }
 
-function cadastrarClientes() {
+function agendamento() {
+
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'block'
+    document.getElementById('tela6').style.display = 'none'
+}
+
+function cadastrarCliente() {
 
     document.getElementById('tela1').style.display = 'none'
     document.getElementById('tela2').style.display = 'none'
     document.getElementById('tela3').style.display = 'block'
     document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
 
     document.getElementById('pergunta1').style.display = 'none'
     document.getElementById('cadastroDoPet').style.display='none'
@@ -169,6 +201,9 @@ function verCadastros() {
     document.getElementById('tela2').style.display = 'none'
     document.getElementById('tela3').style.display = 'none'
     document.getElementById('tela4').style.display = 'block'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
+    document.getElementById('filtrarQual').style.display = "none"
 
     if (parar == 0) {
         let tela4Div = document.getElementById('tela4')
@@ -178,7 +213,7 @@ function verCadastros() {
 
         do {
 
-            if (arrayNomesDosPets[c] == null) {
+            if (arrayNomesDosClientes[c] == null) {
                 
                 parar = 1
     
@@ -328,7 +363,7 @@ function verCadastros() {
             c++
             parar = 1
 
-        } while (c < arrayNomesDosPets.length || parar != 1);
+        } while (c < arrayNomesDosClientes.length || parar != 1);
 
     }
 
@@ -340,141 +375,466 @@ let containerDasContas = ""
 
 function buscar() {
 
-    let c = 0
+    document.getElementById('filtrarQual').style.display = "block"
 
-    if (parar == 0) {
-        let tela4Div = document.getElementById('tela4')
-        containerDasContas = document.createElement('div')
-        containerDasContas.classList.add('cadastros')
-        tela4Div.appendChild(containerDasContas)
+    containerDasContas.remove()
+    parar = 0
 
-        do {
+}
 
-            if (arrayNomesDosPets[c] == null) {
+function filtrarNomeDoCliente() {
+
+    document.getElementById('filtrarQual').style.display = "none"
+
+    let buscarNome = document.getElementById("buscarNome").value
+
+    let nomeBuscado = new String(buscarNome)
+    
+    let letrasBuscadas = nomeBuscado.length
+
+            if (parar == 0) {
+            let tela4Div = document.getElementById('tela4')
+            containerDasContas = document.createElement('div')
+            containerDasContas.classList.add('cadastros')
+            tela4Div.appendChild(containerDasContas)
+
+            for (let c = 0; c < arrayNomesDosClientes.length; c++) {
+
+                let procurandoNome = new String(arrayNomesDosClientes[c])
+                let buscando = procurandoNome.slice(0,letrasBuscadas)
+        
+                if (buscando == nomeBuscado) {
+
+            let caixinhaDaContaDiv = document.createElement('div')
+                let maisInformacoesDiv = document.createElement('div')
+                let maisInformacaoDoClienteDiv = document.createElement('div')
+                maisInformacaoDoClienteDiv.innerHTML = 'Informações do Cliente'
+
+                let informacaoDoNomeDoClienteDiv = document.createElement('div')
+                let infoNomeDoClienteP = document.createElement('p')
+                infoNomeDoClienteP.innerHTML = 'Nome:'
+                let nomeDoClienteP = document.createElement('p')
+                nomeDoClienteP.innerHTML = arrayNomesDosClientes[c]
                 
-                parar = 1
+                let informacaoDoTelefoneDoClienteDiv = document.createElement('div')
+                let infoDoTelefoneDoClienteP = document.createElement('p')
+                infoDoTelefoneDoClienteP.innerHTML = 'Telefone: '
+                let telefoneDoClienteP = document.createElement('p')
+                telefoneDoClienteP.innerHTML = arrayTelefonesDosClientes[c]
+
+                let informacaoDoEmailDoClienteDiv = document.createElement('div')
+                let infoDoEmailDoClienteP = document.createElement('p')
+                infoDoEmailDoClienteP.innerHTML = 'Email: '
+                let emailDoClienteP = document.createElement('p')
+                emailDoClienteP.innerHTML = arrayEmails[c]
+
+                let maisInformacaoDoPetDiv = document.createElement('div')
+
+                let informacaoDoNomeDoPetDiv = document.createElement('div')
+                let infoDoNomeDoPetP = document.createElement('p')
+                infoDoNomeDoPetP.innerHTML = 'Nome: '
+                let nomeDoPetP = document.createElement('p')
+                nomeDoPetP
+                .innerHTML = arrayNomesDosPets[c]
+                
+                let informacaoDoAnimalDiv = document.createElement('div')
+                let infoDoAnimalP = document.createElement('p')
+                infoDoAnimalP.innerHTML = 'Animal: '
+                let animalP = document.createElement('p')
+                animalP.innerHTML = arrayAnimais[c]
+
+                let informacaoDaRacaDoPetDiv = document.createElement('div')
+                let infoDaRacaDoPetP = document.createElement('p')
+                infoDaRacaDoPetP.innerHTML = 'Raça: '
+                let racaDoPetP = document.createElement('p')
+                racaDoPetP.innerHTML = arrayRacasDosPets[c]
+
+                let informacaoDaIdadeDoPetDiv = document.createElement('div')
+                let infoDaIdadeDoPetP = document.createElement('p')
+                infoDaIdadeDoPetP.innerHTML = 'Idade: '
+                let idadeDoPetP = document.createElement('p')
+                idadeDoPetP.innerHTML = arrayIdadesDosPets[c]
+
+                let informacaoDeDetalhesDoPetDiv = document.createElement('div')
+                let infoDeDetalhesDoPetP = document.createElement('p')
+                infoDeDetalhesDoPetP.innerHTML = 'Detalhes sobre o pet:'
+                let detalhesDoPetDiv = document.createElement('div')
+                let detalhesDoPetP = document.createElement('p')
+                detalhesDoPetP.innerHTML = arrayDetalhesSobreOsPets[c]
+
+                caixinhaDaContaDiv.classList.add('cartaoDeCadastro')
+
+                caixinhaDaContaDiv.appendChild(maisInformacoesDiv)
+                maisInformacoesDiv.classList.add('maisInformacoes')
+                maisInformacoesDiv.appendChild(maisInformacaoDoClienteDiv)
+                maisInformacaoDoClienteDiv.classList.add('maisInformacaoDoCliente')
+    
+                /** Nome do Cliente */
+                
+                maisInformacoesDiv.appendChild(informacaoDoNomeDoClienteDiv)
+                informacaoDoNomeDoClienteDiv.classList.add('informacoes')
+                informacaoDoNomeDoClienteDiv.appendChild(infoNomeDoClienteP)
+                infoNomeDoClienteP.classList.add('info')
+                informacaoDoNomeDoClienteDiv.appendChild(nomeDoClienteP)
+                nomeDoClienteP.classList.add('nomeCl')
+    
+                /** Telefone do Cliente */
+    
+                maisInformacoesDiv.appendChild(informacaoDoTelefoneDoClienteDiv)
+                informacaoDoTelefoneDoClienteDiv.classList.add('informacoes')
+                informacaoDoTelefoneDoClienteDiv.appendChild(infoDoTelefoneDoClienteP)
+                infoDoTelefoneDoClienteP.classList.add('info')
+                informacaoDoTelefoneDoClienteDiv.appendChild(telefoneDoClienteP)
+                
+                /** Email do Cliente */
+    
+                maisInformacoesDiv.appendChild(informacaoDoEmailDoClienteDiv)
+                informacaoDoEmailDoClienteDiv.classList.add('informacoes')
+                informacaoDoEmailDoClienteDiv.appendChild(infoDoEmailDoClienteP)
+                infoDoEmailDoClienteP.classList.add('info')
+                informacaoDoEmailDoClienteDiv.appendChild(emailDoClienteP)
+                emailDoClienteP.classList.add('emailDoCliente')
+
+                maisInformacoesDiv.appendChild(maisInformacaoDoPetDiv)
+                maisInformacaoDoPetDiv.innerHTML = 'Informações do Pet'
+                maisInformacaoDoPetDiv.classList.add('maisInformacaoDoPet')
+                
+                /** Nome do Pet */
+                
+                maisInformacoesDiv.appendChild(informacaoDoNomeDoPetDiv)
+                informacaoDoNomeDoPetDiv.classList.add('informacoes')
+                informacaoDoNomeDoPetDiv.appendChild(infoDoNomeDoPetP)
+                infoDoNomeDoPetP.classList.add('info')
+                informacaoDoNomeDoPetDiv.appendChild(nomeDoPetP)
+    
+                /** Especie do Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDoAnimalDiv)
+                informacaoDoAnimalDiv.classList.add('informacoes')
+                informacaoDoAnimalDiv.appendChild(infoDoAnimalP)
+                infoDoAnimalP.classList.add('info')
+                informacaoDoAnimalDiv.appendChild(animalP)
+                
+                /** Raca do Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDaRacaDoPetDiv)
+                informacaoDaRacaDoPetDiv.classList.add('informacoes')
+                informacaoDaRacaDoPetDiv.appendChild(infoDaRacaDoPetP)
+                infoDaRacaDoPetP.classList.add('info')
+                informacaoDaRacaDoPetDiv.appendChild(racaDoPetP)
+    
+                /** Idade do Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDaIdadeDoPetDiv)
+                informacaoDaIdadeDoPetDiv.classList.add('informacoes')
+                informacaoDaIdadeDoPetDiv.appendChild(infoDaIdadeDoPetP)
+                infoDaIdadeDoPetP.classList.add('info')
+                informacaoDaIdadeDoPetDiv.appendChild(idadeDoPetP)
+
+                /** Recado sobre o Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDeDetalhesDoPetDiv)
+                informacaoDeDetalhesDoPetDiv.classList.add('informacoes')
+                informacaoDeDetalhesDoPetDiv.appendChild(infoDeDetalhesDoPetP)
+                infoDeDetalhesDoPetP.classList.add('info')
+
+                maisInformacoesDiv.appendChild(detalhesDoPetDiv)
+                detalhesDoPetDiv.classList.add('detalhes')
+                detalhesDoPetDiv.appendChild(detalhesDoPetP)
+
+                containerDasContas.appendChild(caixinhaDaContaDiv)
+
+            }
+
+        }
+ 
+    }
+
+
+}
+
+function filtrarNomeDoPet() {
+    
+    document.getElementById('filtrarQual').style.display = "none"
+
+    let buscarNome = document.getElementById("buscarNome").value
+
+    let nomeBuscado = new String(buscarNome)
+    
+    let letrasBuscadas = nomeBuscado.length
+
+            if (parar == 0) {
+            let tela4Div = document.getElementById('tela4')
+            containerDasContas = document.createElement('div')
+            containerDasContas.classList.add('cadastros')
+            tela4Div.appendChild(containerDasContas)
+
+            for (let c = 0; c < arrayNomesDosPets.length; c++) {
+
+                let procurandoNome = new String(arrayNomesDosPets[c])
+                let buscando = procurandoNome.slice(0,letrasBuscadas)
+        
+                if (buscando == nomeBuscado) {
+
+            let caixinhaDaContaDiv = document.createElement('div')
+                let maisInformacoesDiv = document.createElement('div')
+                let maisInformacaoDoClienteDiv = document.createElement('div')
+                maisInformacaoDoClienteDiv.innerHTML = 'Informações do Cliente'
+
+                let informacaoDoNomeDoClienteDiv = document.createElement('div')
+                let infoNomeDoClienteP = document.createElement('p')
+                infoNomeDoClienteP.innerHTML = 'Nome:'
+                let nomeDoClienteP = document.createElement('p')
+                nomeDoClienteP.innerHTML = arrayNomesDosClientes[c]
+                
+                let informacaoDoTelefoneDoClienteDiv = document.createElement('div')
+                let infoDoTelefoneDoClienteP = document.createElement('p')
+                infoDoTelefoneDoClienteP.innerHTML = 'Telefone: '
+                let telefoneDoClienteP = document.createElement('p')
+                telefoneDoClienteP.innerHTML = arrayTelefonesDosClientes[c]
+
+                let informacaoDoEmailDoClienteDiv = document.createElement('div')
+                let infoDoEmailDoClienteP = document.createElement('p')
+                infoDoEmailDoClienteP.innerHTML = 'Email: '
+                let emailDoClienteP = document.createElement('p')
+                emailDoClienteP.innerHTML = arrayEmails[c]
+
+                let maisInformacaoDoPetDiv = document.createElement('div')
+
+                let informacaoDoNomeDoPetDiv = document.createElement('div')
+                let infoDoNomeDoPetP = document.createElement('p')
+                infoDoNomeDoPetP.innerHTML = 'Nome: '
+                let nomeDoPetP = document.createElement('p')
+                nomeDoPetP
+                .innerHTML = arrayNomesDosPets[c]
+                
+                let informacaoDoAnimalDiv = document.createElement('div')
+                let infoDoAnimalP = document.createElement('p')
+                infoDoAnimalP.innerHTML = 'Animal: '
+                let animalP = document.createElement('p')
+                animalP.innerHTML = arrayAnimais[c]
+
+                let informacaoDaRacaDoPetDiv = document.createElement('div')
+                let infoDaRacaDoPetP = document.createElement('p')
+                infoDaRacaDoPetP.innerHTML = 'Raça: '
+                let racaDoPetP = document.createElement('p')
+                racaDoPetP.innerHTML = arrayRacasDosPets[c]
+
+                let informacaoDaIdadeDoPetDiv = document.createElement('div')
+                let infoDaIdadeDoPetP = document.createElement('p')
+                infoDaIdadeDoPetP.innerHTML = 'Idade: '
+                let idadeDoPetP = document.createElement('p')
+                idadeDoPetP.innerHTML = arrayIdadesDosPets[c]
+
+                let informacaoDeDetalhesDoPetDiv = document.createElement('div')
+                let infoDeDetalhesDoPetP = document.createElement('p')
+                infoDeDetalhesDoPetP.innerHTML = 'Detalhes sobre o pet:'
+                let detalhesDoPetDiv = document.createElement('div')
+                let detalhesDoPetP = document.createElement('p')
+                detalhesDoPetP.innerHTML = arrayDetalhesSobreOsPets[c]
+
+                caixinhaDaContaDiv.classList.add('cartaoDeCadastro')
+
+                caixinhaDaContaDiv.appendChild(maisInformacoesDiv)
+                maisInformacoesDiv.classList.add('maisInformacoes')
+                maisInformacoesDiv.appendChild(maisInformacaoDoClienteDiv)
+                maisInformacaoDoClienteDiv.classList.add('maisInformacaoDoCliente')
+    
+                /** Nome do Cliente */
+                
+                maisInformacoesDiv.appendChild(informacaoDoNomeDoClienteDiv)
+                informacaoDoNomeDoClienteDiv.classList.add('informacoes')
+                informacaoDoNomeDoClienteDiv.appendChild(infoNomeDoClienteP)
+                infoNomeDoClienteP.classList.add('info')
+                informacaoDoNomeDoClienteDiv.appendChild(nomeDoClienteP)
+                nomeDoClienteP.classList.add('nomeCl')
+    
+                /** Telefone do Cliente */
+    
+                maisInformacoesDiv.appendChild(informacaoDoTelefoneDoClienteDiv)
+                informacaoDoTelefoneDoClienteDiv.classList.add('informacoes')
+                informacaoDoTelefoneDoClienteDiv.appendChild(infoDoTelefoneDoClienteP)
+                infoDoTelefoneDoClienteP.classList.add('info')
+                informacaoDoTelefoneDoClienteDiv.appendChild(telefoneDoClienteP)
+                
+                /** Email do Cliente */
+    
+                maisInformacoesDiv.appendChild(informacaoDoEmailDoClienteDiv)
+                informacaoDoEmailDoClienteDiv.classList.add('informacoes')
+                informacaoDoEmailDoClienteDiv.appendChild(infoDoEmailDoClienteP)
+                infoDoEmailDoClienteP.classList.add('info')
+                informacaoDoEmailDoClienteDiv.appendChild(emailDoClienteP)
+                emailDoClienteP.classList.add('emailDoCliente')
+
+                maisInformacoesDiv.appendChild(maisInformacaoDoPetDiv)
+                maisInformacaoDoPetDiv.innerHTML = 'Informações do Pet'
+                maisInformacaoDoPetDiv.classList.add('maisInformacaoDoPet')
+                
+                /** Nome do Pet */
+                
+                maisInformacoesDiv.appendChild(informacaoDoNomeDoPetDiv)
+                informacaoDoNomeDoPetDiv.classList.add('informacoes')
+                informacaoDoNomeDoPetDiv.appendChild(infoDoNomeDoPetP)
+                infoDoNomeDoPetP.classList.add('info')
+                informacaoDoNomeDoPetDiv.appendChild(nomeDoPetP)
+    
+                /** Especie do Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDoAnimalDiv)
+                informacaoDoAnimalDiv.classList.add('informacoes')
+                informacaoDoAnimalDiv.appendChild(infoDoAnimalP)
+                infoDoAnimalP.classList.add('info')
+                informacaoDoAnimalDiv.appendChild(animalP)
+                
+                /** Raca do Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDaRacaDoPetDiv)
+                informacaoDaRacaDoPetDiv.classList.add('informacoes')
+                informacaoDaRacaDoPetDiv.appendChild(infoDaRacaDoPetP)
+                infoDaRacaDoPetP.classList.add('info')
+                informacaoDaRacaDoPetDiv.appendChild(racaDoPetP)
+    
+                /** Idade do Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDaIdadeDoPetDiv)
+                informacaoDaIdadeDoPetDiv.classList.add('informacoes')
+                informacaoDaIdadeDoPetDiv.appendChild(infoDaIdadeDoPetP)
+                infoDaIdadeDoPetP.classList.add('info')
+                informacaoDaIdadeDoPetDiv.appendChild(idadeDoPetP)
+
+                /** Recado sobre o Pet */
+    
+                maisInformacoesDiv.appendChild(informacaoDeDetalhesDoPetDiv)
+                informacaoDeDetalhesDoPetDiv.classList.add('informacoes')
+                informacaoDeDetalhesDoPetDiv.appendChild(infoDeDetalhesDoPetP)
+                infoDeDetalhesDoPetP.classList.add('info')
+
+                maisInformacoesDiv.appendChild(detalhesDoPetDiv)
+                detalhesDoPetDiv.classList.add('detalhes')
+                detalhesDoPetDiv.appendChild(detalhesDoPetP)
+
+                containerDasContas.appendChild(caixinhaDaContaDiv)
+
+            }
+
+        }
+ 
+    }
+
+}
+
+function agendarCliente() {
+
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'block'
+
+}
+
+function verAgendamentos() {
+
+}
+
+let arrayClienteAgendado = [ ]
+let arrayPetAgendado = [ ]
+let arrayEscolherServico = [ ]
+let arrayAgendarParaQuando = [ ]
+
+function agendar() {
+    let agendarCliente = document.getElementById('agendarCliente').value
+    let agendarPet = document.getElementById('agendarPet').value
+    let escolherServico = document.getElementById('escolherServico').value
+    let horario = document.getElementById('agendarHora').value
+
+    let nomeValido = 0
+    let petValido = 0
+    let horarioValido = 0
+
+        if (agendarCliente.trim() != "") {
+
+            for (let i = 0; i < arrayNomesDosClientes.length; i++) {
+                if (agendarCliente == arrayNomesDosClientes[i]) {
+                    nomeValido++
+                }
+            }   
+            for (let i = 0; i < arrayNomesDosPets.length; i++) {
+                if (agendarPet == arrayNomesDosPets[i]) {
+                    petValido++
+                }
+            }  
+            for (let i = 0; i < arrayAgendarParaQuando.length; i++) {
+                if (horario != arrayAgendarParaQuando[i] || horario == "") {
+                    horarioValido++
+                }
+            }
+            
+            if(nomeValido != 0) {
+                
+                if(petValido != 0) {
+                    
+                    if(horarioValido == 0) {
+    
+                        arrayClienteAgendado.push(agendarCliente)
+                        arrayPetAgendado.push(agendarPet)
+                        arrayEscolherServico.push(escolherServico)
+                        array
+    
+                        document.getElementById('agendarCliente').value = ""
+                        document.getElementById('agendarPet').value = ""
+                        document.getElementById('escolherServico').value = ""
+                        document.getElementById('agendarHora').value = ""
+    
+                    } else {
+                        window.alert("Horário indisponível")
+                    }
+    
+                } else {
+                    document.getElementById('pergunta3').style.display='block'
+                }
     
             } else {
-    
-                let caixinhaDaContaDiv = document.createElement('div')
-                let informacaoDoNomeDiv = document.createElement('div')
-                let nomeDoPetDiv = document.createElement('div')
-                let nomeDoPetP = document.createElement('p')
-                nomeDoPetP.innerHTML = arrayNomesDosPets[c]
-                let fotoDaEspecieImg = document.createElement('img')
-
-                if (arrayAnimais[c] == "Cachorro") {
-                    
-                    fotoDaEspecieImg.src = "cao-bonito-enfiando-a-lingua-para-fora-ilustracao-do-icone-dos-desenhos-animados_138676-2709.png"
-
-                } else if (arrayAnimais[c] == "Gato") {
-                    
-                    fotoDaEspecieImg.src = "gato-bonito-sentado-ilustracao-do-icone-dos-desenhos-animados_138676-2813.png"
-
-                } else {
-
-                }
-                
-                let informacaoDoDonoDiv = document.createElement('div')
-                let donoP  = document.createElement('p')
-                donoP.innerHTML = 'Dono:'
-                let nomeDoDonoP = document.createElement('p')
-                nomeDoDonoP.innerHTML = 'Jorjin'
-                let informacoesSobreOPetDiv = document.createElement('div')
-                let informacaoDoPetP = document.createElement('p')
-                informacaoDoPetP.innerHTML = 'Informações Do Pet'
-                let informacaoDaRacaDiv = document.createElement('div')
-                let racaP = document.createElement('p')
-                racaP.innerHTML = 'Raça:'
-                let nomeDaRacaP = document.createElement('p')
-                nomeDaRacaP.innerHTML = 'Husky'
-                let informacaoDaCorDiv = document.createElement('div')
-                let corP = document.createElement('p')
-                corP.innerHTML = 'Cor:'
-                let nomeDaCorP = document.createElement('p')
-                nomeDaCorP.innerHTML = 'Branco e Preto'
-                let informacaoDaIdadeDiv = document.createElement('div')
-                let idadeP = document.createElement('p')
-                idadeP.innerHTML = 'Idade:'
-                let qualAIdadeP = document.createElement('p')
-                qualAIdadeP.innerHTML = '9 meses'
-                let verMaisDiv = document.createElement('div')
-                let verMaisButton = document.createElement('button')
-                verMaisButton.innerHTML = 'Ver Mais...'
-    
-                caixinhaDaContaDiv.classList.add('cartaoDeCadastro')
-    
-                /** Nome do pet */
-                
-                caixinhaDaContaDiv.appendChild(informacaoDoNomeDiv)
-                informacaoDoNomeDiv.classList.add('informacaoDoNome')
-                informacaoDoNomeDiv.appendChild(nomeDoPetDiv)
-                nomeDoPetDiv.classList.add('nomeDoPet')
-                nomeDoPetDiv.appendChild(nomeDoPetP)
-    
-                /** Foto da especie */
-    
-                caixinhaDaContaDiv.appendChild(fotoDaEspecieImg)
-                
-                /** Informacao do dono */
-    
-                caixinhaDaContaDiv.appendChild(informacaoDoDonoDiv)
-                informacaoDoDonoDiv.classList.add('informacaoDoDono')
-                informacaoDoDonoDiv.appendChild(donoP)
-                donoP.classList.add('dono')
-                informacaoDoDonoDiv.appendChild(nomeDoDonoP)
-                nomeDoDonoP.classList.add('nomeDoDono')
-                
-                /** Informacoes sobre o pet */
-                
-                caixinhaDaContaDiv.appendChild(informacoesSobreOPetDiv)
-                informacoesSobreOPetDiv.classList.add('informacoesSobreOPet')
-                informacoesSobreOPetDiv.classList.add('informacoesDoPet')
-                informacoesSobreOPetDiv.appendChild(informacaoDoPetP)
-                informacaoDoPetP.classList.add('informacaoDoPet')
-    
-                /** Informacao da raca */
-    
-                informacoesSobreOPetDiv.appendChild(informacaoDaRacaDiv)
-                informacaoDaRacaDiv.classList.add('informacaoDaRaca')
-                informacaoDaRacaDiv.appendChild(racaP)
-                racaP.classList.add('info')
-                informacaoDaRacaDiv.appendChild(nomeDaRacaP)
-                nomeDaRacaP.classList.add('nomeDaRaca')
-                
-                /** Informacao da cor */
-    
-                informacoesSobreOPetDiv.appendChild(informacaoDaCorDiv)
-                informacaoDaCorDiv.classList.add('informacaoDaCor')
-                informacaoDaCorDiv.appendChild(corP)
-                corP.classList.add('info')
-                informacaoDaCorDiv.appendChild(nomeDaCorP)
-                nomeDaCorP.classList.add('nomeDaCor')
-    
-                /** Informacao da idade */
-    
-                informacoesSobreOPetDiv.appendChild(informacaoDaIdadeDiv)
-                informacaoDaIdadeDiv.classList.add('informacaoDaIdade')
-                informacaoDaIdadeDiv.appendChild(idadeP)
-                idadeP.classList.add('info')
-                informacaoDaIdadeDiv.appendChild(qualAIdadeP)
-                qualAIdadeP.classList.add('qualAIdade')
-    
-                caixinhaDaContaDiv.appendChild(verMaisDiv)
-                containerDasContas.appendChild(caixinhaDaContaDiv)
-    
-                /** Ver mais */
-    
-                caixinhaDaContaDiv.appendChild(verMaisDiv)
-                verMaisDiv.classList.add('verMais')
-                verMaisDiv.appendChild(verMaisButton)
+                document.getElementById('pergunta2').style.display='block'
             }
+            
+        } else {
+            window.alert('Preencha os campos corretamente')
+        }
+
     
-            c++
-            parar = 1
+}
+function resposta2Sim() {
+    document.getElementById('pergunta2').style.display='none'
+    document.getElementById('cadastroDoPet').style.display='none'
+    document.getElementById('cadastroDoCliente').style.display='block'
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'block'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
+}
+function resposta2Nao() {
+    document.getElementById('pergunta2').style.display='none'
+    window.alert('Não é possivel fazer agendamento sem o cliente tá cadastrado')
+}
 
-        } while (c < arrayNomesDosPets.length || parar != 1);
+function resposta3Sim() {
+    document.getElementById('pergunta3').style.display='none'
+    document.getElementById('cadastroDoPet').style.display='block'
+    document.getElementById('cadastroDoCliente').style.display='none'
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'block'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
 
-    }
+}
+function resposta3Nao() {
+    document.getElementById('pergunta3').style.display='none'
+    window.alert('Não é possivel fazer agendamento sem o pet tá cadastrado')
 }
 
