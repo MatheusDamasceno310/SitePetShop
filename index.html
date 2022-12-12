@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Kratos Pet Shop</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
     <link href="bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="logocavalo.png" type="image/x-icon">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="#" onclick="home()">Logo</a>
+          <a href="#" onclick="home()"> <img class ="logoimg" src="logocavalo.png"></a>
         </div>
         <nav>
           <ul>
@@ -27,7 +29,7 @@
             </li>
             <li>
               <div class="financas">
-                <a href="#">Finanças</a>
+                <a href="#" onclick="financasDoSite()">Finanças</a>
               </div>
             </li>
           </ul>
@@ -35,41 +37,39 @@
 
     </header>
     <main>
+      <div class="todo"> 
         <article>
-            <section id="tela1">
-                <div id="carrossel" class="carousel slide" data-bs-ride="true">
-                    <div class="carousel-indicators">
-                      <button type="button" data-bs-target="#carrossel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                      <button type="button" data-bs-target="#carrossel" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                      <button type="button" data-bs-target="#carrossel" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                    </div>
-                    <div class="carousel-inner">
-                      <div class="carousel-item active">
-                        <img src="carrossel/banho-e-tosa-em-gatos-1024x576.jpg" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="carrossel/banho-e-tosa-em-gatos-pet-shop.jpeg" class="d-block w-100" alt="...">
-                      </div>
-                      <div class="carousel-item">
-                        <img src="carrossel/banho-e-tosa-em-gatos-1024x576.jpg" class="d-block w-100" alt="...">
-                      </div>
-                    </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carrossel" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carrossel" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
+          <section id="tela1">
+            <div class="Container">
+              <div class="row Movies">
+                  <div class="col-lg-4 col-md4">
+                      <div class="row">
+                          <div class="col-6"><a href="#"><img src="cachorro.webp"></a></div>
+                              <div class="col-6"><a href="#"><img src="gato.jpg"></a></div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md4">
+                  <div class="row">
+                      <div class="col-6"><a href="#"><img src="passarinho.jpg"></a></div>
+                          <div class="col-6"><a href="#"><img src="husky3.jpg"></a></div>
+              </div>
+          </div>
+          <div class="col-lg-4 col-md4">
+              <div class="row">
+                  <div class="col-6"><a href="#"><img src="gato2.jpg"></a></div>
+                      <div class="col-6"><a href="#"><img src="cavalo.jpeg"></a></div>
+          </div>
+      </div>
+          </div>
+      </div>
+       
                 <div class="cadastroEAgendamento">
                     <div class="botaoCadastro">
-                        <a href="#" onclick="cadastro()">Logo</a>
+                      <a href="#" onclick="cadastro()"><img class ="logoimg" src="cadastro.png"></a>
                         <p>Cadastro de clientes e pets</p>
                     </div>
                     <div class="botaoAgendamento">
-                        <a href="#" onclick="agendamento()">Logo</a>
+                        <a href="#" onclick="agendamento()"><img class ="logoimg" src="agendamento.png"></a>
                         <p>Agendamento de horarios</p>
                     </div>
                 </div>
@@ -79,10 +79,14 @@
               <div class="opcoesDeCadastro">
 
                 <div class="fazerCadastro" onclick="cadastrarCliente()"><div class="imgFazerCadastro"></div>
+                <img class ="cadastroimg" src="cadastro.png">
+              <p>Realizar Cadastro</p>
                 
                 </div>
-                <div class="verCadastros" onclick="verCadastros()"><div class="imgVerCadastros"></div>
-                <p>Ver Cadastros</p>
+                <div class="fazerCadastro" onclick="verCadastros()"><div class="imgFazerCadastro"></div>
+                <img class ="cadastroimg" src="cadastro.png">
+              <p>Ver Cadastro</p>
+                
                 </div>
               </div>
             </section>
@@ -142,10 +146,10 @@
 
                       <div class="botoesCadastroPet">
                         <div class="voltar">
-                          <a href="#" onclick="voltar()">Voltar</a>
+                          <buttom class="custom-btn btn-5"  onclick="voltar()">Retornar</buttom>
                         </div>
                         <div class="finalizarCadastro">
-                          <a href="#" onclick="finalizarCadastro()">Finalizar</a>
+                          <buttom class="custom-btn btn-5" onclick="finalizarCadastro()">Finalizar</buttom>
                         </div>
                       </div>
 
@@ -173,7 +177,7 @@
                       </div>
 
                       <div class="proximaEtapa">
-                        <a onclick="proximaEtapa()">Prixima etapa</a>
+                        <button class="custom-btn btn-5" onclick="proximaEtapa()">Proxima etapa</button>
                       </div>
 
                     </div>
@@ -184,11 +188,11 @@
 
             <section id="tela4">
               <div class="buscarCadastro">
-                    <div class="buscarNome">
-                        <input type="text" name="buscarNome" id="buscarNome">
+                    <div >
+                        <input class="buscarNome" type="text" name="buscarNome" id="buscarNome">
                     </div>
                     <div class="botaoBuscar">
-                        <button type="submit" onclick="buscar()">Buscar</button>
+                        <button  class="custom-btn btn-5" type="submit" onclick="buscar()">Buscar</button>
                         <div id="filtrarQual">
                           <p>Qual deseja buscar:</p>
                           <div class="opcoes1">
@@ -205,9 +209,12 @@
               <div class="opcoesDeAgendamento">
 
                 <div class="fazerAgendamento" onclick="agendarCliente()"><div class="imgFazerAgendamento"></div>
+                <img class ="cadastroimg2" src="agendamento.png">
+                <p>Realizar Agendamentos</p>
                 
                 </div>
-                <div class="verAgendamentos" onclick="verAgendamentos()"><div class="imgVerAgendamentos"></div>
+                <div class="fazerAgendamento" onclick="verAgendamentos()"><div class="imgFazerAgendamento"></div>
+                <img class ="cadastroimg2" src="agendamento.png">
                 <p>Ver Agendamentos</p>
                 </div>
               </div>
@@ -257,7 +264,7 @@
                           <div class="agendarHora">
                             <input type="datetime-local" name="agendarHora" id="agendarHora">
                           </div>
-                          <div class="marcarAgendamento"><a onclick="agendar()">Marcar</a></div>
+                          <div class="marcarAgendamento"> <buttom class="custom-btn btn-5"  onclick="agendar()">Marcar</buttom></div>
                         </div>
                       </div>
                 </fieldset>
@@ -272,6 +279,57 @@
         
             </section>
 
+            <section id="tela8">
+              <div class="financasDiv">
+                <div class="resume">
+                  <div>
+                    Entradas: R$
+                    <span class="incomes">0.00</span>
+                  </div>
+                  <div>
+                    Saídas: R$
+                    <span class="expenses">0.00</span>
+                  </div>
+                  <div>
+                    Total: R$
+                    <span class="total">0.00</span>
+                  </div>
+                </div>
+                <div class="newItem">
+                  <div class="divDesc">
+                    <label for="desc">Descrição</label>
+                    <input type="text" id="desc" />
+                  </div>
+                  <div class="divAmount">
+                    <label for="amount">Valor</label>
+                    <input type="number" id="amount" />
+                  </div>
+                  <div class="divType">
+                    <label for="type">Tipo</label>
+                    <select id="type">
+                      <option>Entrada</option>
+                      <option>Saída</option>
+                    </select>
+                  </div>
+                  <button id="btnNew">Incluir</button>
+                </div>
+                <div class="divTable">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Descrição</th>
+                        <th class="columnAmount">Valor</th>
+                        <th class="columnType">Tipo</th>
+                        <th class="columnAction"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </section>
+            
         </article>
     </main>
     <script src="script.js"></script>

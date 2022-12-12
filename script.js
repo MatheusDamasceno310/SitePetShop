@@ -23,6 +23,8 @@ function home() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 }
 
 function opcoesDeCadastro() {
@@ -34,6 +36,8 @@ function opcoesDeCadastro() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 
     limpar()
     containerDasContas.outerHTML=""
@@ -51,6 +55,8 @@ function opcoesDeAgendamento() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'block'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 
     limpar()
     tabelaDosAgendamentos.outerHTML=""
@@ -183,6 +189,8 @@ function resposta1Nao() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 
     limpar()
     containerDasContas.outerHTML=""
@@ -197,6 +205,8 @@ function cadastro() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 }
 
 function agendamento() {
@@ -207,6 +217,8 @@ function agendamento() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'block'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 }
 
 function cadastrarCliente() {
@@ -217,7 +229,8 @@ function cadastrarCliente() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
-
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
     document.getElementById('pergunta1').style.display = 'none'
     document.getElementById('cadastroDoPet').style.display='none'
     document.getElementById('cadastroDoCliente').style.display='block'
@@ -234,6 +247,8 @@ function verCadastros() {
     document.getElementById('tela4').style.display = 'block'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
     document.getElementById('filtrarQual').style.display = "none"
 
     if (parar == 0) {
@@ -763,9 +778,21 @@ function agendarCliente() {
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'block'
     document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 }
 
 let tabelaDosAgendamentos = ""
+
+function financasDoSite() {
+    document.getElementById('tela1').style.display = 'none'
+    document.getElementById('tela2').style.display = 'none'
+    document.getElementById('tela3').style.display = 'none'
+    document.getElementById('tela4').style.display = 'none'
+    document.getElementById('tela5').style.display = 'none'
+    document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'flex'
+}
 
 function apagarAgendamento() {
     
@@ -783,6 +810,7 @@ function verAgendamentos() {
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
     document.getElementById('tela7').style.display = 'block'
+    document.getElementById('tela8').style.display = 'none'
 
     if (parar == 0 && arrayAgendarCliente[c] != null) {
         let todosOsAgendamentosDiv = document.getElementById('todosOsAgendamentos')
@@ -921,6 +949,7 @@ function agendar() {
                         document.getElementById('tela5').style.display = 'block'
                         document.getElementById('tela6').style.display = 'none'
                         document.getElementById('tela7').style.display = 'none'
+                        document.getElementById('tela8').style.display = 'none'
 
                         tabelaDosAgendamentos.outerHTML=""
 
@@ -951,6 +980,8 @@ function resposta2Sim() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 }
 function resposta2Nao() {
     document.getElementById('pergunta2').style.display='none'
@@ -967,6 +998,8 @@ function resposta3Sim() {
     document.getElementById('tela4').style.display = 'none'
     document.getElementById('tela5').style.display = 'none'
     document.getElementById('tela6').style.display = 'none'
+    document.getElementById('tela7').style.display = 'none'
+    document.getElementById('tela8').style.display = 'none'
 
 }
 function resposta3Nao() {
@@ -974,3 +1007,98 @@ function resposta3Nao() {
     window.alert('Não é possivel fazer agendamento sem o pet tá cadastrado')
 }
 
+const tbody = document.querySelector("tbody");
+const descItem = document.querySelector("#desc");
+const amount = document.querySelector("#amount");
+const type = document.querySelector("#type");
+const btnNew = document.querySelector("#btnNew");
+
+const incomes = document.querySelector(".incomes");
+const expenses = document.querySelector(".expenses");
+const total = document.querySelector(".total");
+
+let items;
+
+btnNew.onclick = () => {
+  if (descItem.value === "" || amount.value === "" || type.value === "") {
+    return alert("Preencha todos os campos!");
+  }
+
+  items.push({
+    desc: descItem.value,
+    amount: Math.abs(amount.value).toFixed(2),
+    type: type.value,
+  });
+
+  setItensBD();
+
+  loadItens();
+
+  descItem.value = "";
+  amount.value = "";
+};
+
+function deleteItem(index) {
+  items.splice(index, 1);
+  setItensBD();
+  loadItens();
+}
+
+function insertItem(item, index) {
+  let tr = document.createElement("tr");
+
+  tr.innerHTML = `
+    <td>${item.desc}</td>
+    <td>R$ ${item.amount}</td>
+    <td class="columnType">${
+      item.type === "Entrada"
+        ? '<i class="bx bxs-chevron-up-circle"></i>'
+        : '<i class="bx bxs-chevron-down-circle"></i>'
+    }</td>
+    <td class="columnAction">
+      <button onclick="deleteItem(${index})"><i class='bx bx-trash'></i></button>
+    </td>
+  `;
+
+  tbody.appendChild(tr);
+}
+
+function loadItens() {
+  items = getItensBD();
+  tbody.innerHTML = "";
+  items.forEach((item, index) => {
+    insertItem(item, index);
+  });
+
+  getTotals();
+}
+
+function getTotals() {
+  const amountIncomes = items
+    .filter((item) => item.type === "Entrada")
+    .map((transaction) => Number(transaction.amount));
+
+  const amountExpenses = items
+    .filter((item) => item.type === "Saída")
+    .map((transaction) => Number(transaction.amount));
+
+  const totalIncomes = amountIncomes
+    .reduce((acc, cur) => acc + cur, 0)
+    .toFixed(2);
+
+  const totalExpenses = Math.abs(
+    amountExpenses.reduce((acc, cur) => acc + cur, 0)
+  ).toFixed(2);
+
+  const totalItems = (totalIncomes - totalExpenses).toFixed(2);
+
+  incomes.innerHTML = totalIncomes;
+  expenses.innerHTML = totalExpenses;
+  total.innerHTML = totalItems;
+}
+
+const getItensBD = () => JSON.parse(localStorage.getItem("db_items")) ?? [];
+const setItensBD = () =>
+  localStorage.setItem("db_items", JSON.stringify(items));
+
+loadItens();
